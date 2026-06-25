@@ -11,18 +11,20 @@
 ; FUNÇÃO 1: VERIFICAR CORTE DO MOTOR
 ; =====================================================================
 verificar_corte_motor:
-    cp   r25, r1               
-    brne 2f                    
-    cp   r24, r1               
-    breq 1f                    
-    cpi  r24, 5                
-    brlo 1f                    
-    jmp  2f                    
-1:
-    ldi  r24, 1                
-    ret
-2:
-    ldi  r24, 0                
+    ; r24 = Low Byte, r25 = High Byte, r1 = Zero Absoluto
+
+    cp   r25, r1        ; Testa se o valor passou de 255 (High Byte > 0)
+    brne 2f             ; Se passou, o motor VAI GIRAR (pula pro rótulo 2)
+    
+    cpi  r24, 5         ; O valor está entre 0 e 255. Compara direto com 5!
+    brlo 1f             ; Se for 0, 1, 2, 3 ou 4, o motor VAI PARAR (pula pro rótulo 1)
+    
+2:                      ; ---- RÓTULO 2: SINAL DE GIRO (FALSE) ----
+    ldi  r24, 0         ; O valor é >= 5. Retorna 0 pro C++
+    ret                 
+
+1:                      ; ---- RÓTULO 1: SINAL DE CORTE (TRUE) ----
+    ldi  r24, 1         ; O valor caiu na zona morta (< 5). Retorna 1 pro C++
     ret
 
 ; =====================================================================

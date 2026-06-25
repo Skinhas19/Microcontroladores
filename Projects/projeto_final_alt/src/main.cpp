@@ -38,7 +38,7 @@ void loop()
     porcentagem = 0;                                   // Força a variável de tela para 0%
   }                                                    // Fechamento da condição verdadeira (if)
   else {                                               // Caso a função em Assembly retorne 0 (falso, o motor deve girar):
-    velocidadeMapeada = constrain(map(val, 5, 1015, velocidadeMinima, 255), 0, 255); // Calcula a proporção de potência e corta excessos (Overflow)
+    velocidadeMapeada = constrain(map(val, 5, 1015, velocidadeMinima, 255), velocidadeMinima, 255); // Calcula a proporção de potência e corta excessos (Overflow)
     porcentagem = constrain(map(val, 5, 1015, 0, 100), 0, 100);                      // Calcula a proporção para a tela e trava estritamente em 100 máximo
   }                                                    
 
