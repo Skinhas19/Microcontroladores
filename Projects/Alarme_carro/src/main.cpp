@@ -11,9 +11,9 @@ const int BOTAO_PIN = 6;
 
 // --- Credenciais ---
 const char* ssid = "A15 de Lucas";
-const char* password = "12345678";
-const char* BOT_TOKEN = "8898846123:AAHKPzjQ3idqTivADpXt1RVBcaG4Nk28xIE";
-const char* CHAT_ID = "7967251086";
+const char* password = "********";
+const char* BOT_TOKEN = "************";
+const char* CHAT_ID = "***********";
 
 // --- Parâmetros ---
 const int TEMPO_ANALISE_MS = 300;
